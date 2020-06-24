@@ -1,0 +1,375 @@
+﻿@model DataAccess.SurveyDetails
+
+@{
+    ViewBag.Title="Survey";
+}
+
+
+<script src="/Scripts/jquery-3.5.1.min.js"></script>
+<script src="/Scripts/jquery.validate.min.js"></script>
+<script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Survey</title>
+</head>
+
+<body>
+    <style>
+
+        #btnSave 
+        {
+            background-color: #4CAF50;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;   
+            color:white;   
+            font-size: 14px;    
+            font-weight: bold;
+             padding: 5px 12px;
+        }
+
+        #btnCancel 
+        {
+            background-color: #f44336;
+             border: 2px solid #f44336;
+            border-radius: 4px;
+            color:white; 
+            font-size: 14px; 
+            font-weight: bold; 
+            padding: 5px 12px;   
+        }
+
+        .style, select 
+        {
+           width: 30%;
+           padding: 5px 12px;
+           margin: 8px 0;
+           display: inline-block;
+           border: 1px solid #ccc;
+           border-radius: 4px;
+           box-sizing: border-box;
+        }
+
+        input[type='radio'] {
+  -webkit-appearance:none;
+  width:16px;
+  height:16px;
+  border:1px solid darkgray;
+  border-radius:50%;
+  outline:none;
+  box-shadow:0 0 5px 0px white inset;
+}
+
+input[type='radio']:hover {
+  box-shadow:0 0 5px 0px white inset;
+}
+
+input[type='radio']:before {
+  content:'';
+  display:block;
+  width:60%;
+  height:60%;
+  margin: 20% auto;    
+  border-radius:50%;    
+}
+input[type='radio']:checked:before {
+  background:blue;
+}
+
+ 
+    </style>
+    <div class="container">
+        <h1 style="font-weight:initial">Survey</h1>
+
+            <form action="" name="survey" id="survey">
+
+                <div class="form-group">                    
+                        <label for="name" style="margin-right:10px">Name</label>
+                        <input type="text" name="name" id="name" placeholder="John Smith" class="style" />
+                        <br/>
+                        <span class="error" id="nameerror"style="color:red">Please enter name.</span>
+                        <span class="error" id="nameSpecialerror" style="color:red">No special characters are allowed in name.</span>
+                        <span class="error" id="namenoerror" style="color:red">Name can't begin with number.</span>
+                 </div>
+                <div class="form-group">
+                      <label for="age"  style="margin-right:10px">Age</label>
+                      <input type="text" name="age" id="age" placeholder="Numeric" class="style"  onkeypress="return isNumberKey(event)"/>
+                      <br />
+                      <span class="error" id="ageerror" style="color:red">Please enter age.</span>
+                      <span class="error" id="agemaxerror" style="color:red">Please enter age less than 100</span>
+                      <span class="error" id="agedigitserror" style="color:red">Please enter digits only</span>                   
+                 </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                        <label><input type="radio" name="gender" value="Tran" id="Tran">Tran</label>
+                        <label><input type="radio" name="gender" value="She" id="She">She</label>
+                        <label><input type="radio" name="gender" value="He" id="He">He</label>
+                        <br/>
+                        <span class="error" id="gendererror" style="color:red">Please select gender</span>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="email" style="margin-right:10px">Email</label>
+                    <input type="email" name="email" id="email" placeholder="sample@example.com" class="style" />
+                    <br />
+                    <span class="error" id="invalidemailerror" style="color:red">Email-id is invalid</span>
+                    <br />
+                    <span class="error" id="emailerror" style="color:red">Please enter email</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="city" style="margin-right:10px">City</label>
+                    <select id='cities' onchange="selection(this);">
+                        <option value="none" selected>
+                            Select 
+                        </option> 
+                        <option value="New Delhi">New Delhi</option>
+                        <option value="Gurgaon">Gurgaon</option>
+                        <option value="Noida">Noida</option>
+                        <option value="Greater Noida">Greater Noida</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Jaipur">Jaipur</option>
+                    </select> 
+                    <br />                  
+                    <span class="error" id="cityerror" style="color:red">Please select any city</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="resume" style="margin-right:10px">Upload Resume</label>
+                        <input type="file" id="FileUpload1" accept=".txt"/>
+                        <br />
+                        <span class="error" id="resumeerror" style="color:red">Choose the file</span>
+                        <br />
+                        <span class="error" id="extensionerror" style="color:red">Only .txt files are acceptable</span>
+                </div>
+
+ 
+                <div class="form-group">
+                    <label for="education">Education</label>
+                    <label><input type="checkbox" name="education" value="10th" >10th</label>
+                    <label><input type="checkbox" name="education" value="12th" >12th</label>
+                    <label><input type="checkbox" name="education" value="Degree" >Degree</label>
+                    <label><input type="checkbox" name="education" value="Masters" >Masters</label>
+                    <br />
+                    <span class="error" id="educationerror" style="color:red">Please select your qualifications</span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <button id="btnSave">
+                        SAVE
+                    </button>
+                    <button id="btnCancel">
+                        CANCEL
+                    </button>
+                </div>
+
+            </form>
+
+    </div>
+ <script type="text/javascript">
+
+     var selectedOption = '';
+     var s = '';
+     var final = '';
+     var resumeFile = '';
+     var file = '';
+
+  $(document).ready(function () {
+      $('.error').hide();
+
+
+      $("#btnSave").click(function (e) {
+
+          e.preventDefault();
+
+
+          $('input:checkbox[name=education]').each(function () {
+              if ($(this).is(':checked')) {
+                  s = s + $(this).val();
+                  s = s + ',';
+                  final = s.substring(0, s.length - 1);
+              }
+
+          });
+
+          var valid = false;
+
+          var ext = $('#FileUpload1').val().split('.').pop().toLowerCase();
+          if ($.inArray(ext, ['txt']) == -1) {
+            
+              valid = true;
+              $('#extensionerror').show();
+          }
+
+          if ($('#name').val() == '') {
+
+              valid = true;
+              $('#nameerror').show();
+              $('#name').css('border-color', 'red');
+            
+          } 
+
+          if ($.isNumeric($('#name').val().slice(0, 1))) {
+
+              $('#namenoerror').show();
+              $('#name').css('border-color', 'red');
+              valid = true;
+
+          }
+
+          if ($('#age').val() == '') {
+
+              $('#ageerror').show();
+              $('#age').css('border-color', 'red');
+              valid = true;
+
+          }
+
+          if ($('#age').val() > 100) {
+              $('#agemaxerror').show();
+              $('#age').css('border-color', 'red');
+              valid = true;
+          }
+
+          if ($('#email').val() == '') {
+              valid = true;
+              $('#emailerror').show();
+              $('#email').css('border-color', 'red');
+
+          }
+
+
+          if ($("#FileUpload1").get(0).files[0] == '') {
+              valid = true;
+              $('#resumeerror').show();
+              $('#FileUpload1').css('border-color', 'red');
+
+          }
+
+          if (selectedOption == '') {
+              valid = true;
+              $('#cityerror').show();
+              $('#cities').css('border-color', 'red');
+
+          }
+
+          if (final == '') {
+              valid = true;
+              $('#educationerror').show();
+
+          }
+
+          if ((!($('#Tran').prop('checked'))) && (!($('#She').prop('checked'))) && (!($('#He').prop('checked')))) {
+              valid = true;
+              $('#gendererror').show();
+              $('#gender').css('border-color', 'red');
+          }
+
+          if (!validateEmail($('#email').val())) {
+              valid = true;
+              $('#invalidemailerror').show();
+              $('#email').css('border-color', 'red');
+
+          }
+
+          if (!validateName($('#name').val())) {
+              valid = true;
+              $('#nameSpecialerror').show();
+              $('#name').css('border-color', 'red');
+
+          }
+          
+
+          if (!valid) {
+           
+              if (window.FormData !== undefined) {
+
+                  var fileUpload = $("#FileUpload1").get(0);
+                  file = fileUpload.files[0];
+
+                  if (file.size > (131072)) {
+                      alert("Sorry!! Max allowed file size is 1 mb"); 
+                      $('#FileUpload1').replaceWith($(this).val('').clone(true));
+
+                  }
+
+                  var formData = new FormData();
+
+                  formData.append(file.name, file);
+                  formData.append("Name", $('#name').val());
+                  formData.append("Age", $('#age').val());
+                  formData.append("Gender", $("#survey input[type='radio']:checked").val());
+                  formData.append("Email", $('#email').val());
+                  formData.append("City", selectedOption);
+                  formData.append("Education", final);
+
+
+                  $.ajax({
+                      url: '/Survey/UploadData',
+                      type: "POST",
+                      contentType: false,
+                      processData: false,
+                      data: formData,
+                      success: function (data, status, jqXHR) {
+                          alert("Survey Done !!");
+                          //console.log(data);
+                          //console.log(status);
+                          //console.log(jqXHR);
+   
+                          $("#survey")[0].reset();
+                      },
+                      error: function (err) {
+                          
+                      }
+                  });
+              } else {
+                  alert("FormData is not supported.");
+              }
+          }
+
+      });
+
+      $("#btnCancel").click(function () {
+
+          $("#survey")[0].reset();
+
+
+      });
+  });
+
+ 
+     function selection(sel) {
+             selectedOption = sel.value;
+     }
+
+     function isNumberKey(evt) {
+         var charCode = (evt.which) ? evt.which : event.keyCode;
+         if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+             return false;
+         } else {
+             return true;
+         }
+     }
+
+     function isValid(str) {
+         return !/[~`!@@#$%\^&*()+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
+     }
+
+     function validateEmail($email) {
+         var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+         return emailReg.test($email);
+     }
+
+     function validateName($name) {
+         var nameReg = /^[a-zA-Z0-9]+$/;
+         return nameReg.test($name);
+     }
+ </script>
+</body>
+
+</html>

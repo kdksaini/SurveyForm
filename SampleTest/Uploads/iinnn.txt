@@ -1,0 +1,72 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="363.025" height="363.024" style="enable-background:new 0 0 363.025 363.024;" xml:space="preserve"><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none"/>
+
+<g class="currentLayer" style=""><title>Layer 1</title><g id="svg_1" class="">
+	<g id="svg_2">
+		<path style="fill: rgb(3, 3, 3);" d="M216.9450660943985,30.708662033081055 C116.85506975650787,30.708662033081055 35.43306887149811,112.1326675415039 35.43306887149811,212.22166442871094 c0,100.08799743652344 81.4219970703125,181.51199340820312 181.51199340820312,181.51199340820312 c100.08899688720703,0 181.51300048828125,-81.42400360107422 181.51300048828125,-181.51199340820312 C398.45802080631256,112.1326675415039 317.03407061100006,30.708662033081055 216.9450660943985,30.708662033081055 zM216.9450660943985,382.02264404296875 c-93.6259994506836,0 -169.802001953125,-76.17500305175781 -169.802001953125,-169.802001953125 S123.31907427310944,42.418663024902344 216.9450660943985,42.418663024902344 c93.62699890136719,0 169.80299377441406,76.1760025024414 169.80299377441406,169.80299377441406 S310.57203447818756,382.02264404296875 216.9450660943985,382.02264404296875 z" id="svg_3"/>
+		<polygon style="fill: rgb(3, 3, 3);" points="222.8010689020157,141.9586639404297 211.09107744693756,141.9586639404297 211.09107744693756,206.36566162109375 146.68307268619537,206.36566162109375 146.68307268619537,218.07666015625 211.09107744693756,218.07666015625 211.09107744693756,282.483642578125 222.8010689020157,282.483642578125 222.8010689020157,218.07666015625 287.2090584039688,218.07666015625 287.2090584039688,206.36566162109375 222.8010689020157,206.36566162109375 " id="svg_4"/>
+	</g>
+</g><rect fill="" style="color: rgb(0, 0, 0);" stroke-dashoffset="" fill-rule="nonzero" id="svg_5" x="64" y="87" width="1" height="1"/><rect fill="" style="color: rgb(0, 0, 0);" stroke-dashoffset="" fill-rule="nonzero" id="svg_8" x="116" y="150" width="1" height="0"/><rect fill="" style="color: rgb(0, 0, 0);" stroke-dashoffset="" fill-rule="nonzero" id="svg_10" x="113" y="68" width="122" height="39" class=""/><path fill="" fill-opacity="1" stroke="none" stroke-opacity="1" style="color: rgb(0, 0, 0);" stroke-width="1" stroke-dasharray="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-dashoffset="" fill-rule="nonzero" opacity="1" marker-start="" marker-mid="" marker-end="" id="svg_12" d="M79.93769836425781,183.13685381412506 C125.60698699951172,188.64866411685944 123.24478149414062,180.77464067935944 123.24478149414062,203.6092964410782 C123.24478149414062,226.4439216852188 116.15817260742188,246.1289802789688 99.62273406982422,252.4281746149063 C83.0873031616211,258.72739946842194 65.76446533203125,251.6407905817032 58.6778564453125,226.4439216852188 C51.59123992919922,201.24708330631256 47.654232025146484,186.2864509820938 54.7408447265625,183.9242378473282 C61.82746124267578,181.56202471256256 78.3628921508789,128.01873552799225 77.9527587890625,127.55906450748444 C78.3628921508789,128.01873552799225 99.62273406982422,134.3179451227188 99.62273406982422,133.53054583072662 C99.62273406982422,132.74314653873444 338.2054138183594,136.68015825748444 338.2054138183594,136.68015825748444 " class=""/></g></svg>
+SN	  Name	Description
+1	  Transaction ID	6PB0617420463845
+2	  Bank Ref ID	IK00FNKXH5
+
+
+P[null]-N[null]
+
+n[]
+
+
+31
+23
+43
+24
+
+
+
+ 2-3
+2-4-3-1
+
+2
+4 
+3
+1
+
+5 4 3 2 1
+
+
+
+17519007
+
+
+Reference No.	IK00FQEAC3
+Debit Account No.	00000036120541550
+Government Receipt Number	17519007
+Amount	INR  777.00
+Amount in Words	Seven Hundred and Seventy Seven Rupees only
+Status	Scheduled for 30/06/2017
+Debit Branch	PBB HAUZ KHAS
+
+19 m shared events sheet
+20 t
+21 w
+22 thu events build
+23 fri
+24 s-----
+25 s-----
+26 m-- give Ad Spot
+27 t Prioritised Adspot , given Ad spot changes build same day, and crashes fix, nsdk changed
+28 w Analytics event, target 25
+29 t 
+30 f 19,20 build 19 20 build (threading issue)
+s
+
+
+
+youtube videos repoting what other country media says about indian topics, and indian interactons with other countries,
+and
+
+like free media for foregin countries about the realities about there countries which there media cannot show.
+
+disrupting eyewear monoply of luxotica by offering cheaper glasses to people, sunglasses for all countries, prescription glases to Canada/America, can be done online too.
+
+keytool -exportcert -alias glomeal -keystore glomeal.keystore | openssl sha1 -binary | openssl base64 

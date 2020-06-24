@@ -1,0 +1,69 @@
+﻿@model DataAccess.SurveyDetails
+
+@{
+    ViewBag.Title = "Survey Details";
+}
+<div style="font-family:Arial;color:purple">
+    <h2>Survey Details</h2>
+
+    <table style="font-family:'Arial'">
+        <tr>
+            <td style="color:forestgreen">
+                <b>Name:</b>
+            </td>
+            <td style="color:brown">
+               @Model.Name
+            </td>
+        </tr>
+        <tr>
+            <td style="color:forestgreen">
+                <b>Age:</b>
+            </td>
+            <td style="color:brown">
+                @Model.Age
+            </td>
+        </tr>
+        <tr>
+            <td style="color:forestgreen">
+                <b>Gender:</b>
+            </td>
+            <td style="color:brown">
+                @Model.Gender
+            </td>
+        </tr>
+        <tr>
+            <td style="color:forestgreen">
+                <b>Email:</b>
+            </td>
+            <td style="color:brown">
+                @Model.Email
+            </td>
+        </tr>
+        <tr>
+            <td style="color:forestgreen">
+                <b>City:</b>
+            </td>
+            <td style="color:brown">
+                @Model.City
+            </td>
+        </tr>
+        <tr>
+            <td style="color:forestgreen">
+                <b>Resume:</b>
+            </td>
+            <td style="color:brown">
+                @Model.Resume
+            </td>
+        </tr>
+        <tr>
+            <td style="color:forestgreen">
+                <b>Education:</b>
+            </td>
+            <td style="color:brown">
+                @Model.Education
+            </td>
+        </tr>
+    </table>
+
+  
+</div>
