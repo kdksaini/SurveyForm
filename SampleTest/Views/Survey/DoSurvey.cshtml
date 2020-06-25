@@ -28,7 +28,7 @@
             color:white;   
             font-size: 14px;    
             font-weight: bold;
-             padding: 5px 12px;
+            padding: 5px 12px;
         }
 
         #btnCancel 
@@ -79,7 +79,6 @@ input[type='radio']:checked:before {
   background:blue;
 }
 
- 
     </style>
     <div class="container">
         <h1 style="font-weight:initial">Survey</h1>
@@ -87,29 +86,29 @@ input[type='radio']:checked:before {
             <form action="" name="survey" id="survey">
 
                 <div class="form-group">                    
-                        <label for="name" style="margin-right:10px">Name</label>
+                        <label for="name">Name</label>
                         <input type="text" name="name" id="name" placeholder="John Smith" class="style" />
                         <br/>
-                        <span class="error" id="nameerror"style="color:red">Please enter name.</span>
-                        <span class="error" id="nameSpecialerror" style="color:red">No special characters are allowed in name.</span>
-                        <span class="error" id="namenoerror" style="color:red">Name can't begin with number.</span>
+                        <span class="error" id="nameerror"style="color:red" hidden>Please enter name.</span>
+                        <span class="error" id="nameSpecialerror" style="color:red" hidden>No special characters are allowed in name.</span>
+                        <span class="error" id="namenoerror" style="color:red" hidden>Name can't begin with number.</span>
                  </div>
                 <div class="form-group">
-                      <label for="age"  style="margin-right:10px">Age</label>
+                      <label for="age">Age</label>
                       <input type="text" name="age" id="age" placeholder="Numeric" class="style"  onkeypress="return isNumberKey(event)"/>
                       <br />
-                      <span class="error" id="ageerror" style="color:red">Please enter age.</span>
-                      <span class="error" id="agemaxerror" style="color:red">Please enter age less than 100</span>
-                      <span class="error" id="agedigitserror" style="color:red">Please enter digits only</span>                   
+                      <span class="error" id="ageerror" style="color:red" hidden>Please enter age.</span>
+                      <span class="error" id="agemaxerror" style="color:red" hidden>Please enter age less than 100</span>
+                      <span class="error" id="agedigitserror" style="color:red" hidden>Please enter digits only</span>                   
                  </div>
 
                 <div class="form-group">
-                    <label for="gender">Gender</label>
+                    <label for="gender" >Gender</label>
                         <label><input type="radio" name="gender" value="Tran" id="Tran">Tran</label>
                         <label><input type="radio" name="gender" value="She" id="She">She</label>
                         <label><input type="radio" name="gender" value="He" id="He">He</label>
                         <br/>
-                        <span class="error" id="gendererror" style="color:red">Please select gender</span>
+                        <span class="error" id="gendererror" style="color:red" hidden>Please select gender</span>
                     
                 </div>
 
@@ -117,17 +116,14 @@ input[type='radio']:checked:before {
                     <label for="email" style="margin-right:10px">Email</label>
                     <input type="email" name="email" id="email" placeholder="sample@example.com" class="style" />
                     <br />
-                    <span class="error" id="invalidemailerror" style="color:red">Email-id is invalid</span>
-                    <br />
-                    <span class="error" id="emailerror" style="color:red">Please enter email</span>
+                    <span class="error" id="invalidemailerror" style="color:red" hidden>Email-id is invalid</span>
+                    <span class="error" id="emailerror" style="color:red" hidden>Please enter email</span>
                 </div>
 
                 <div class="form-group">
                     <label for="city" style="margin-right:10px">City</label>
                     <select id='cities' onchange="selection(this);">
-                        <option value="none" selected>
-                            Select 
-                        </option> 
+                        <option value="none" selected disabled> Select </option> 
                         <option value="New Delhi">New Delhi</option>
                         <option value="Gurgaon">Gurgaon</option>
                         <option value="Noida">Noida</option>
@@ -136,16 +132,16 @@ input[type='radio']:checked:before {
                         <option value="Jaipur">Jaipur</option>
                     </select> 
                     <br />                  
-                    <span class="error" id="cityerror" style="color:red">Please select any city</span>
+                    <span class="error" id="cityerror" style="color:red" hidden>Please select any city</span>
                 </div>
 
                 <div class="form-group">
                     <label for="resume" style="margin-right:10px">Upload Resume</label>
                         <input type="file" id="FileUpload1" accept=".txt"/>
                         <br />
-                        <span class="error" id="resumeerror" style="color:red">Choose the file</span>
-                        <br />
-                        <span class="error" id="extensionerror" style="color:red">Only .txt files are acceptable</span>
+                        <span class="error" id="resumeerror" style="color:red" hidden>Choose the file</span>
+                        <span class="error" id="extensionerror" style="color:red" hidden>Only .txt files are acceptable</span>
+                        <span class="error" id="sizeerror" style="color:red" hidden>File with size less than 1 MB is acceptable</span>
                 </div>
 
  
@@ -156,7 +152,7 @@ input[type='radio']:checked:before {
                     <label><input type="checkbox" name="education" value="Degree" >Degree</label>
                     <label><input type="checkbox" name="education" value="Masters" >Masters</label>
                     <br />
-                    <span class="error" id="educationerror" style="color:red">Please select your qualifications</span>
+                    <span class="error" id="educationerror" style="color:red" hidden>Please select your qualifications</span>
                 </div>
                 <br />
                 <div class="form-group">
@@ -173,52 +169,61 @@ input[type='radio']:checked:before {
     </div>
  <script type="text/javascript">
 
-     var selectedOption = '';
-     var s = '';
-     var final = '';
-     var resumeFile = '';
+     var selectedOption='';
      var file = '';
 
   $(document).ready(function () {
-      $('.error').hide();
-
 
       $("#btnSave").click(function (e) {
 
           e.preventDefault();
 
-
+          var s = '';
+          var final = '';
           $('input:checkbox[name=education]').each(function () {
-              if ($(this).is(':checked')) {
-                  s = s + $(this).val();
-                  s = s + ',';
-                  final = s.substring(0, s.length - 1);
-              }
 
+                  if ($(this).is(':checked')) {
+                      s = s + $(this).val();
+                      s = s + ',';
+                      final = s.substring(0, s.length - 1);
+              }
           });
 
-          var valid = false;
-
-          var ext = $('#FileUpload1').val().split('.').pop().toLowerCase();
-          if ($.inArray(ext, ['txt']) == -1) {
-            
-              valid = true;
-              $('#extensionerror').show();
-          }
+          var validNameNull = false;
+          var validNameNumeric = false;
+          var validNameSpecial = false;
+          var validAgeNull = false;
+          var validAgeMax = false;
+          var validGender = false;
+          var validEmailNull = false;
+          var validEmailValid = false;
+          var validCity = false;
+          var validResumeNull = false;
+          var validResumeSize = false;
+          var validResumeType = false;
+          var validEducation = false;
 
           if ($('#name').val() == '') {
 
-              valid = true;
+              validNameNull = true;
               $('#nameerror').show();
               $('#name').css('border-color', 'red');
             
-          } 
+          } else if ($('#name').val() != '') {
 
-          if ($.isNumeric($('#name').val().slice(0, 1))) {
+              if ($.isNumeric($('#name').val().slice(0, 1))) {
 
-              $('#namenoerror').show();
-              $('#name').css('border-color', 'red');
-              valid = true;
+                  $('#namenoerror').show();
+                  $('#name').css('border-color', 'red');
+                  validNameNumeric = true;
+
+              }
+
+              if (!validateName($('#name').val())) {
+                  validNameSpecial = true;
+                  $('#nameSpecialerror').show();
+                  $('#name').css('border-color', 'red');
+              }
 
           }
 
@@ -226,77 +231,81 @@ input[type='radio']:checked:before {
 
               $('#ageerror').show();
               $('#age').css('border-color', 'red');
-              valid = true;
+              validAgeNull = true;
 
-          }
+          }else if ($('#age').val() != '') {
 
-          if ($('#age').val() > 100) {
-              $('#agemaxerror').show();
-              $('#age').css('border-color', 'red');
-              valid = true;
-          }
-
-          if ($('#email').val() == '') {
-              valid = true;
-              $('#emailerror').show();
-              $('#email').css('border-color', 'red');
-
-          }
-
-
-          if ($("#FileUpload1").get(0).files[0] == '') {
-              valid = true;
-              $('#resumeerror').show();
-              $('#FileUpload1').css('border-color', 'red');
-
-          }
-
-          if (selectedOption == '') {
-              valid = true;
-              $('#cityerror').show();
-              $('#cities').css('border-color', 'red');
-
-          }
-
-          if (final == '') {
-              valid = true;
-              $('#educationerror').show();
+              if ($('#age').val() > 100) {
+                  $('#agemaxerror').show();
+                  $('#age').css('border-color', 'red');
+                  validAgeMax = true;
+              }
 
           }
 
           if ((!($('#Tran').prop('checked'))) && (!($('#She').prop('checked'))) && (!($('#He').prop('checked')))) {
-              valid = true;
+              validGender = true;
               $('#gendererror').show();
               $('#gender').css('border-color', 'red');
           }
 
-          if (!validateEmail($('#email').val())) {
-              valid = true;
-              $('#invalidemailerror').show();
+          if ($('#email').val() == '') {
+              validEmailNull = true;
+              $('#emailerror').show();
               $('#email').css('border-color', 'red');
 
+          }else  if ($('#email').val() != '') {
+
+              if (!validateEmail($('#email').val())) {
+                  validEmailValid = true;
+                  $('#invalidemailerror').show();
+                  $('#email').css('border-color', 'red');
+
+              }
           }
 
-          if (!validateName($('#name').val())) {
-              valid = true;
-              $('#nameSpecialerror').show();
-              $('#name').css('border-color', 'red');
+          if (selectedOption == '') {
+              validCity = true;
+              $('#cityerror').show();
+              $('#cities').css('border-color', 'red');
+          }
+
+          if (final == '') {
+              validEducation = true;
+              $('#educationerror').show();
+          }
+
+          if ($("#FileUpload1").get(0).files[0] == undefined) {
+
+              validResumeNull = true;
+              $('#resumeerror').show();
+              $('#FileUpload1').css('border-color', 'red');
+
+          } else  if ($("#FileUpload1").get(0).files[0] != undefined) {
+
+              var ext = $('#FileUpload1').val().split('.').pop().toLowerCase();
+              if ($.inArray(ext, ['txt']) == -1) {
+
+                  validResumeType = true;
+                  $('#extensionerror').show();
+              }
+
+              if ($("#FileUpload1").get(0).files[0].size > (131072)) {
+                  $('#sizeerror').show();
+                  $('#FileUpload1').replaceWith($("#FileUpload1").val('').clone(true));
+                  validResumeSize = true;
+              }
 
           }
-          
 
-          if (!valid) {
+
+          if (!(validNameNull) && !(validNameNumeric) && !(validNameSpecial) && !(validAgeNull) && !(validAgeMax) && !(validGender) && !(validEmailNull) && !(validEmailValid) && !(validCity) && !(validResumeNull) && !(validResumeSize) && !(validResumeType) && !(validEducation)) {
            
               if (window.FormData !== undefined) {
 
+
                   var fileUpload = $("#FileUpload1").get(0);
                   file = fileUpload.files[0];
-
-                  if (file.size > (131072)) {
-                      alert("Sorry!! Max allowed file size is 1 mb"); 
-                      $('#FileUpload1').replaceWith($(this).val('').clone(true));
-
-                  }
 
                   var formData = new FormData();
 
@@ -316,20 +325,19 @@ input[type='radio']:checked:before {
                       processData: false,
                       data: formData,
                       success: function (data, status, jqXHR) {
-                          alert("Survey Done !!");
-                          //console.log(data);
-                          //console.log(status);
-                          //console.log(jqXHR);
-   
-                          $("#survey")[0].reset();
+
+                          location.href = "/Survey/SurveyDetail/" + data;
                       },
                       error: function (err) {
-                          
+                          alert("Error while saving survey !!");
                       }
                   });
               } else {
                   alert("FormData is not supported.");
               }
+          } else {
+              alert("Please enter required details !!");
+
           }
 
       });
@@ -343,8 +351,10 @@ input[type='radio']:checked:before {
   });
 
  
-     function selection(sel) {
-             selectedOption = sel.value;
+  function selection(sel) {
+
+      selectedOption = sel.value;
+      console.log(selectedOption);
      }
 
      function isNumberKey(evt) {
@@ -369,6 +379,8 @@ input[type='radio']:checked:before {
          var nameReg = /^[a-zA-Z0-9]+$/;
          return nameReg.test($name);
      }
+
+     
  </script>
 </body>
 

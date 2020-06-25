@@ -11,7 +11,7 @@ namespace DataAccess
 {
     public class SurveyData
     {
-        public void AddSurvey(SurveyDetails details)
+        public string AddSurvey(SurveyDetails details)
         {
             string conString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
 
@@ -19,12 +19,6 @@ namespace DataAccess
             {
                 SqlCommand command = new SqlCommand("spAddSurvey", con);
                 command.CommandType = CommandType.StoredProcedure;
-
-               // SqlParameter PID = new SqlParameter();
-               // PID.ParameterName = "@ID";
-               // PID.Direction = ParameterDirection.ReturnValue;
-               //// PID.Value = details.Name;
-               // command.Parameters.Add(PID);
 
                 SqlParameter PName = new SqlParameter();
                 PName.ParameterName = "@Name";
@@ -61,10 +55,24 @@ namespace DataAccess
                 PEducation.Value = details.Education;
                 command.Parameters.Add(PEducation);
 
-                con.Open();
-                command.ExecuteNonQuery();
-                //con.Close();
-                //Console.WriteLine(PID.Value);
+                command.Parameters.Add("@ID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                try
+                {
+                    con.Open();
+                    command.ExecuteNonQuery();
+                    string id = command.Parameters["@ID"].Value.ToString();
+                    return id;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                    con.Dispose();
+                }
             }
         }
 
